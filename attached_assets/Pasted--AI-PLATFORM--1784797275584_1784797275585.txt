@@ -1,0 +1,381 @@
+---------------------------------------------------
+AI PLATFORM
+---------------------------------------------------
+
+GLU is not just an ebook application.
+
+GLU is an AI-powered knowledge platform.
+
+Artificial Intelligence should be deeply integrated into every part of the application.
+
+Every AI feature should work independently while sharing a centralized AI service.
+
+Support multiple AI providers:
+
+- OpenAI
+- Google Gemini
+- Anthropic Claude
+- Local LLMs (Optional)
+
+The architecture must allow switching providers without changing the application.
+
+---------------------------------------------------
+AI BOOK CHAT (RAG)
+---------------------------------------------------
+
+Users can open any book and chat directly with it.
+
+The AI should answer ONLY using information from the selected book.
+
+Use Retrieval Augmented Generation (RAG).
+
+Features:
+
+- Ask questions
+- Explain concepts
+- Explain chapters
+- Explain paragraphs
+- Explain difficult words
+- Answer with citations
+- Display page number
+- Display chapter number
+- Quote the original paragraph
+- Show confidence score
+- Related references
+- Continue conversations
+
+Example:
+
+User:
+Who killed the main character?
+
+AI:
+According to Chapter 14, Page 221...
+
+---------------------------------------------------
+BOOK SUMMARIZATION
+---------------------------------------------------
+
+Generate summaries using AI.
+
+Support:
+
+- One paragraph summary
+- Detailed summary
+- Chapter summary
+- Full book summary
+- Executive summary
+- Bullet point summary
+- Timeline summary
+
+The user should choose:
+
+- Short
+- Medium
+- Long
+
+---------------------------------------------------
+PARAGRAPH EXPLANATION
+---------------------------------------------------
+
+The user can select any paragraph.
+
+AI should explain it using:
+
+- Simple English
+- Children's explanation
+- Academic explanation
+- Technical explanation
+
+---------------------------------------------------
+WORD EXPLANATION
+---------------------------------------------------
+
+Selecting a word should provide:
+
+- Meaning
+- Pronunciation
+- Translation
+- Synonyms
+- Antonyms
+- Example sentence
+
+---------------------------------------------------
+SMART TRANSLATION
+---------------------------------------------------
+
+Translate:
+
+- Selected text
+- Paragraph
+- Chapter
+- Entire book
+
+Supported languages:
+
+- English
+- Arabic
+- Turkish
+- French
+- German
+- Spanish
+
+Preserve formatting.
+
+---------------------------------------------------
+AI READING ASSISTANT
+---------------------------------------------------
+
+While reading AI can:
+
+- Explain difficult ideas
+- Recommend similar books
+- Suggest next chapter
+- Detect reading habits
+- Encourage daily reading
+- Suggest reading schedule
+
+---------------------------------------------------
+AI NOTES
+---------------------------------------------------
+
+Generate notes automatically.
+
+Users can:
+
+- Save notes
+- Edit notes
+- Export notes
+- Organize notes
+- Search notes
+
+---------------------------------------------------
+SMART HIGHLIGHTS
+---------------------------------------------------
+
+Highlight text.
+
+AI automatically categorizes highlights.
+
+Categories:
+
+- Important
+- Definition
+- Idea
+- Quote
+- Character
+- Event
+- Reminder
+
+---------------------------------------------------
+FLASHCARD GENERATOR
+---------------------------------------------------
+
+Generate flashcards automatically.
+
+Support:
+
+- Question
+- Answer
+- Image
+- Difficulty
+- Review history
+- Spaced repetition
+
+---------------------------------------------------
+QUIZ GENERATOR
+---------------------------------------------------
+
+Generate quizzes automatically.
+
+Question types:
+
+- Multiple Choice
+- True / False
+- Fill in the blanks
+- Matching
+- Short answer
+
+After submission:
+
+- Grade instantly
+- Explain mistakes
+- Recommend revision
+
+---------------------------------------------------
+AI STUDY MODE
+---------------------------------------------------
+
+Special learning mode.
+
+Includes:
+
+- Learning goals
+- Daily plan
+- Weekly plan
+- Progress tracking
+- Revision reminders
+
+---------------------------------------------------
+AI WRITING ASSISTANT
+---------------------------------------------------
+
+For authors.
+
+Features:
+
+- Grammar correction
+- Rewrite paragraph
+- Improve writing style
+- Continue writing
+- Generate chapter ideas
+- Generate titles
+- Generate descriptions
+- Character creation
+- Dialogue suggestions
+- Plot suggestions
+- Ending suggestions
+
+---------------------------------------------------
+CHARACTER AI
+---------------------------------------------------
+
+For novels.
+
+Generate:
+
+- Character profile
+- Personality
+- Relationships
+- Family tree
+- Timeline
+- Character growth
+
+Users can ask:
+
+"Tell me about this character."
+
+---------------------------------------------------
+STORY TIMELINE
+---------------------------------------------------
+
+Automatically build:
+
+- Timeline
+- Major events
+- Character appearances
+- Important locations
+
+Display as an interactive timeline.
+
+---------------------------------------------------
+BOOK COMPARISON
+---------------------------------------------------
+
+Compare books using AI.
+
+Compare:
+
+- Themes
+- Writing style
+- Difficulty
+- Characters
+- Lessons
+- Storytelling
+- Popularity
+
+---------------------------------------------------
+AI RECOMMENDATION ENGINE
+---------------------------------------------------
+
+Recommend books based on:
+
+- Reading history
+- Favorite authors
+- Favorite genres
+- Reading speed
+- Reading level
+- AI interests analysis
+
+---------------------------------------------------
+TEXT TO SPEECH
+---------------------------------------------------
+
+Convert books into audio.
+
+Support:
+
+- Male voices
+- Female voices
+- Natural voices
+- Speed control
+- Pause
+- Resume
+- Offline audio
+
+---------------------------------------------------
+SPEECH TO TEXT
+---------------------------------------------------
+
+Users can dictate notes.
+
+Convert speech into text.
+
+---------------------------------------------------
+AI MODERATION
+---------------------------------------------------
+
+Automatically detect:
+
+- Spam
+- Hate speech
+- Toxic comments
+- Copyright violations
+- Adult content
+
+---------------------------------------------------
+AI ANALYTICS
+---------------------------------------------------
+
+Generate insights:
+
+- Reading behavior
+- Popular books
+- Trending topics
+- Reader interests
+- Author performance
+
+---------------------------------------------------
+KNOWLEDGE GRAPH
+---------------------------------------------------
+
+Generate relationships between:
+
+- Books
+- Authors
+- Characters
+- Topics
+- Events
+- Places
+
+Display interactive graphs.
+
+---------------------------------------------------
+FUTURE AI FEATURES
+---------------------------------------------------
+
+Design the architecture to support:
+
+- AI Tutors
+- AI Podcasts
+- AI Video Summaries
+- AI Animated Stories
+- AI Voice Conversations
+- AI Reading Coach
+- AI Debate Mode
+- AI Research Assistant
+- AI Learning Companion
+
+The system should be modular, scalable, and ready for future AI models without major architectural changes.
+
+End of Part 2.

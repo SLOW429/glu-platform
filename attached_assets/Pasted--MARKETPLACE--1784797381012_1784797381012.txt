@@ -1,0 +1,445 @@
+---------------------------------------------------
+MARKETPLACE
+---------------------------------------------------
+
+Authors should be able to sell:
+
+Books
+
+Novels
+
+Audiobooks
+
+Courses
+
+Premium Chapters
+
+Subscriptions
+
+Bundles
+
+Features:
+
+Revenue Dashboard
+
+Sales Analytics
+
+Coupons
+
+Discounts
+
+Refund System
+
+Taxes
+
+Invoices
+
+Affiliate System
+
+---------------------------------------------------
+PAYMENTS
+---------------------------------------------------
+
+Support:
+
+Stripe
+
+PayPal
+
+Apple Pay
+
+Google Pay
+
+Local Payment Providers
+
+Subscriptions
+
+One-time Purchases
+
+Coupons
+
+Gift Cards
+
+Invoices
+
+---------------------------------------------------
+PREMIUM MEMBERSHIP
+---------------------------------------------------
+
+Premium users receive:
+
+Unlimited AI Usage
+
+Unlimited AI Chat
+
+Unlimited Summaries
+
+Unlimited Flashcards
+
+Unlimited Quizzes
+
+Offline Reading
+
+Offline Audio
+
+Exclusive Books
+
+Premium Themes
+
+Priority Support
+
+No Advertisements
+
+Early Access Features
+
+---------------------------------------------------
+GAMIFICATION
+---------------------------------------------------
+
+Implement:
+
+XP System
+
+Levels
+
+Daily Reading Goals
+
+Weekly Goals
+
+Monthly Challenges
+
+Achievements
+
+Badges
+
+Leaderboards
+
+Reading Streak
+
+Reading Calendar
+
+Daily Missions
+
+Reward System
+
+Seasonal Events
+
+---------------------------------------------------
+COMMUNITY
+---------------------------------------------------
+
+Users can:
+
+Follow Authors
+
+Follow Readers
+
+Create Reading Groups
+
+Private Messages
+
+Public Discussions
+
+Book Clubs
+
+Events
+
+Polls
+
+Share Quotes
+
+Share Notes
+
+Like
+
+Comment
+
+Mention Users
+
+---------------------------------------------------
+RECOMMENDATION ENGINE
+---------------------------------------------------
+
+Recommend based on:
+
+AI Analysis
+
+Reading History
+
+Genres
+
+Authors
+
+Behavior
+
+Ratings
+
+Bookmarks
+
+Highlights
+
+Notes
+
+Community Activity
+
+---------------------------------------------------
+ANALYTICS
+---------------------------------------------------
+
+For Readers:
+
+Reading Speed
+
+Reading Time
+
+Books Finished
+
+Favorite Genres
+
+Achievements
+
+Weekly Progress
+
+Monthly Progress
+
+Yearly Progress
+
+For Authors:
+
+Revenue
+
+Readers
+
+Followers
+
+Retention
+
+Completion Rate
+
+Popular Chapters
+
+Popular Quotes
+
+Sales
+
+---------------------------------------------------
+SEO
+---------------------------------------------------
+
+Implement:
+
+Structured Data
+
+Schema.org
+
+Meta Tags
+
+OpenGraph
+
+Twitter Cards
+
+Sitemap
+
+Robots.txt
+
+Canonical URLs
+
+Rich Snippets
+
+---------------------------------------------------
+LEGAL
+---------------------------------------------------
+
+Support:
+
+Privacy Policy
+
+Terms of Service
+
+Cookie Policy
+
+GDPR
+
+DMCA
+
+Copyright Protection
+
+Content Reporting
+
+---------------------------------------------------
+DEVOPS
+---------------------------------------------------
+
+Use:
+
+Docker
+
+Docker Compose
+
+GitHub Actions
+
+CI/CD
+
+Monitoring
+
+Logging
+
+Automatic Backups
+
+Cloud Storage
+
+Horizontal Scaling
+
+Load Balancer
+
+CDN
+
+---------------------------------------------------
+MVP
+---------------------------------------------------
+
+Phase 1:
+
+Authentication
+
+Books
+
+Authors
+
+Reading
+
+Search
+
+Bookmarks
+
+Comments
+
+Ratings
+
+AI Summary
+
+AI Chat
+
+---------------------------------------------------
+PHASE 2
+---------------------------------------------------
+
+Marketplace
+
+Premium
+
+Audiobooks
+
+Flashcards
+
+Quiz
+
+Highlights
+
+Notes
+
+---------------------------------------------------
+PHASE 3
+---------------------------------------------------
+
+AI Agents
+
+Knowledge Graph
+
+Voice Assistant
+
+Teacher AI
+
+Research AI
+
+Community
+
+Book Clubs
+
+---------------------------------------------------
+PHASE 4
+---------------------------------------------------
+
+Educational Platform
+
+University Integration
+
+Publisher Portal
+
+School Accounts
+
+Organization Accounts
+
+Enterprise Dashboard
+
+---------------------------------------------------
+FUTURE VISION
+---------------------------------------------------
+
+The long-term vision is to become the world's largest AI-powered reading and learning ecosystem.
+
+The platform should evolve into a complete knowledge platform where users can:
+
+Read
+
+Listen
+
+Learn
+
+Discuss
+
+Research
+
+Publish
+
+Sell
+
+Teach
+
+Study
+
+Collaborate
+
+All powered by Artificial Intelligence.
+
+---------------------------------------------------
+FINAL INSTRUCTION
+---------------------------------------------------
+
+Always generate production-ready code.
+
+Follow clean architecture.
+
+Write scalable code.
+
+Write secure code.
+
+Use best practices.
+
+Write reusable components.
+
+Use modern UI.
+
+Optimize for performance.
+
+Optimize for SEO.
+
+Optimize for accessibility.
+
+Generate complete documentation.
+
+Generate database diagrams.
+
+Generate API documentation.
+
+Generate deployment scripts.
+
+Generate testing strategy.
+
+Generate monitoring strategy.
+
+Never generate placeholder architecture.
+
+Think like a Senior Staff Engineer at Google, Microsoft, Apple, Amazon, or Meta.
+
+The final product should be startup-ready, investor-ready, and production-ready.

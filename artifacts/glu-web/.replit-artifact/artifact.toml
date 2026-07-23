@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "GLU — AI Knowledge Platform"
+version = "1.0.0"
+id = "artifacts/glu-web"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24305
+
+[services.development]
+run = "pnpm --filter @workspace/glu-web run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/glu-web", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/glu-web/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24305"
+BASE_PATH = "/"

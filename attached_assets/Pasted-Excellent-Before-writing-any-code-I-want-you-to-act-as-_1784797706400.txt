@@ -1,0 +1,128 @@
+Excellent. Before writing any code, I want you to act as the CTO and Lead Software Architect of GLU.
+
+Do NOT rush into implementation.
+
+I want you to first create a complete technical foundation for the project.
+
+Your workflow must be:
+
+Phase 0:
+- Analyze all requirements.
+- Identify missing requirements.
+- Suggest improvements.
+- Identify scalability risks.
+- Identify security risks.
+- Identify performance bottlenecks.
+
+Phase 1:
+Create the complete project architecture.
+
+Include:
+
+- System Architecture
+- Clean Architecture
+- Domain Driven Design
+- Modular Monolith (MVP)
+- Future Microservices Migration
+- Event Driven Architecture
+- AI Architecture
+- RAG Architecture
+- Multi-Agent Architecture
+- Vector Database Architecture
+- Search Architecture
+- Caching Architecture
+- Authentication Architecture
+- Notification Architecture
+- Payment Architecture
+- Analytics Architecture
+
+Phase 2:
+Design the complete database.
+
+Generate:
+
+- ER Diagram
+- Database Schema
+- Relationships
+- Constraints
+- Indexes
+- Performance Optimization
+- Partitioning Strategy
+- Backup Strategy
+
+Phase 3:
+Design every REST API endpoint.
+
+Include:
+
+- Request
+- Response
+- Authentication
+- Authorization
+- Error Handling
+- Validation
+- Rate Limits
+
+Phase 4:
+Design the frontend architecture.
+
+Include:
+
+- React Architecture
+- Next.js App Router
+- Component Structure
+- State Management
+- Theme System
+- Responsive Layout
+- Accessibility
+- Performance Optimization
+
+Phase 5:
+Design the AI architecture.
+
+Include:
+
+- AI Gateway
+- AI Provider Abstraction
+- OpenAI
+- Gemini
+- Claude
+- Local LLM Support
+- Prompt Templates
+- AI Memory
+- AI Agents
+- RAG
+- Embeddings
+- Vector Search
+- Citation Engine
+- AI Cost Optimization
+
+Phase 6:
+Design the mobile architecture.
+
+Flutter
+
+Clean Architecture
+
+Offline Mode
+
+Synchronization
+
+Push Notifications
+
+Phase 7:
+Generate the implementation roadmap.
+
+Break the project into milestones.
+
+Each milestone should be independently deployable.
+
+After ALL architecture and planning are finished, begin implementation.
+
+Never skip planning.
+
+Never generate placeholder code.
+
+Generate production-ready code only.
+
+The project should be scalable to millions of users and should follow Google, Microsoft, and Netflix engineering standards.

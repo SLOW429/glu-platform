@@ -3,20 +3,40 @@ info:
   # Do not change the title, if the title changes, the import paths will be broken
   title: Api
   version: 0.1.0
-  description: API specification
+  description: GLU — AI Knowledge Platform API
 servers:
   - url: /api
     description: Base API path
 tags:
   - name: health
     description: Health operations
+  - name: auth
+    description: Authentication
+  - name: books
+    description: Book operations
+  - name: chapters
+    description: Chapter operations
+  - name: authors
+    description: Author operations
+  - name: categories
+    description: Category operations
+  - name: reviews
+    description: Review operations
+  - name: library
+    description: User library
+  - name: bookmarks
+    description: Bookmarks
+  - name: ai
+    description: AI features
+  - name: stats
+    description: Reading statistics
+
 paths:
   /healthz:
     get:
       operationId: healthCheck
       tags: [health]
       summary: Health check
-      description: Returns server health status
       responses:
         "200":
           description: Healthy
@@ -24,6 +44,729 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+
+  # ─── AUTH ────────────────────────────────────────────────────────────────────
+  /auth/register:
+    post:
+      operationId: register
+      tags: [auth]
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegisterInput"
+      responses:
+        "201":
+          description: Registered
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthResponse"
+        "409":
+          description: Email already registered
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /auth/login:
+    post:
+      operationId: login
+      tags: [auth]
+      summary: Login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginInput"
+      responses:
+        "200":
+          description: Logged in
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthResponse"
+        "401":
+          description: Invalid credentials
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /auth/logout:
+    post:
+      operationId: logout
+      tags: [auth]
+      summary: Logout
+      responses:
+        "200":
+          description: Logged out
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MessageResponse"
+
+  /auth/me:
+    get:
+      operationId: getMe
+      tags: [auth]
+      summary: Get current user
+      responses:
+        "200":
+          description: Current user
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    patch:
+      operationId: updateMe
+      tags: [auth]
+      summary: Update current user profile
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserUpdate"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+
+  # ─── BOOKS ───────────────────────────────────────────────────────────────────
+  /books:
+    get:
+      operationId: listBooks
+      tags: [books]
+      summary: List books with filters
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 20
+        - name: categoryId
+          in: query
+          schema:
+            type: ["integer", "null"]
+        - name: language
+          in: query
+          schema:
+            type: ["string", "null"]
+        - name: isFree
+          in: query
+          schema:
+            type: ["boolean", "null"]
+        - name: sortBy
+          in: query
+          schema:
+            type: string
+            enum: [newest, popular, rating, title]
+            default: newest
+      responses:
+        "200":
+          description: Books list
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BooksPage"
+
+  /books/featured:
+    get:
+      operationId: getFeaturedBooks
+      tags: [books]
+      summary: Get featured books
+      responses:
+        "200":
+          description: Featured books
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Book"
+
+  /books/trending:
+    get:
+      operationId: getTrendingBooks
+      tags: [books]
+      summary: Get trending books
+      responses:
+        "200":
+          description: Trending books
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Book"
+
+  /books/new-releases:
+    get:
+      operationId: getNewReleases
+      tags: [books]
+      summary: Get new releases
+      responses:
+        "200":
+          description: New releases
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Book"
+
+  /books/search:
+    get:
+      operationId: searchBooks
+      tags: [books]
+      summary: Search books
+      parameters:
+        - name: q
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 20
+      responses:
+        "200":
+          description: Search results
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BooksPage"
+
+  /books/{id}:
+    get:
+      operationId: getBook
+      tags: [books]
+      summary: Get a book by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Book details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BookDetail"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /books/{id}/chapters:
+    get:
+      operationId: getBookChapters
+      tags: [books]
+      summary: Get chapters for a book
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Chapters list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Chapter"
+
+  /books/{id}/like:
+    post:
+      operationId: likeBook
+      tags: [books]
+      summary: Like a book
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Like toggled
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LikeResponse"
+
+  # ─── CHAPTERS ────────────────────────────────────────────────────────────────
+  /chapters/{id}:
+    get:
+      operationId: getChapter
+      tags: [chapters]
+      summary: Get chapter content
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Chapter content
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Chapter"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  # ─── AUTHORS ─────────────────────────────────────────────────────────────────
+  /authors:
+    get:
+      operationId: listAuthors
+      tags: [authors]
+      summary: List authors
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 20
+      responses:
+        "200":
+          description: Authors list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Author"
+
+  /authors/{id}:
+    get:
+      operationId: getAuthor
+      tags: [authors]
+      summary: Get an author by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Author details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Author"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /authors/{id}/books:
+    get:
+      operationId: getAuthorBooks
+      tags: [authors]
+      summary: Get books by author
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Author's books
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Book"
+
+  /authors/{id}/follow:
+    post:
+      operationId: followAuthor
+      tags: [authors]
+      summary: Follow an author
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Followed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MessageResponse"
+    delete:
+      operationId: unfollowAuthor
+      tags: [authors]
+      summary: Unfollow an author
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Unfollowed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MessageResponse"
+
+  # ─── CATEGORIES ──────────────────────────────────────────────────────────────
+  /categories:
+    get:
+      operationId: listCategories
+      tags: [categories]
+      summary: List all categories
+      responses:
+        "200":
+          description: Categories list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Category"
+
+  # ─── REVIEWS ─────────────────────────────────────────────────────────────────
+  /books/{id}/reviews:
+    get:
+      operationId: listBookReviews
+      tags: [reviews]
+      summary: Get reviews for a book
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Reviews list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Review"
+    post:
+      operationId: createReview
+      tags: [reviews]
+      summary: Create a review
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReviewInput"
+      responses:
+        "201":
+          description: Review created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Review"
+
+  /reviews/{id}:
+    delete:
+      operationId: deleteReview
+      tags: [reviews]
+      summary: Delete a review
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Deleted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MessageResponse"
+
+  # ─── LIBRARY ─────────────────────────────────────────────────────────────────
+  /library:
+    get:
+      operationId: getLibrary
+      tags: [library]
+      summary: Get user's library
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: ["string", "null"]
+            enum: [reading, finished, want_to_read, favorite, null]
+      responses:
+        "200":
+          description: Library items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/LibraryItem"
+    post:
+      operationId: addToLibrary
+      tags: [library]
+      summary: Add a book to library
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LibraryInput"
+      responses:
+        "201":
+          description: Added to library
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LibraryItem"
+
+  /library/{bookId}:
+    patch:
+      operationId: updateLibraryItem
+      tags: [library]
+      summary: Update library item status/progress
+      parameters:
+        - name: bookId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LibraryUpdate"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LibraryItem"
+    delete:
+      operationId: removeFromLibrary
+      tags: [library]
+      summary: Remove a book from library
+      parameters:
+        - name: bookId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Removed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MessageResponse"
+
+  # ─── BOOKMARKS ───────────────────────────────────────────────────────────────
+  /bookmarks:
+    get:
+      operationId: getBookmarks
+      tags: [bookmarks]
+      summary: Get user's bookmarks
+      parameters:
+        - name: bookId
+          in: query
+          schema:
+            type: ["integer", "null"]
+      responses:
+        "200":
+          description: Bookmarks list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Bookmark"
+    post:
+      operationId: createBookmark
+      tags: [bookmarks]
+      summary: Create a bookmark
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BookmarkInput"
+      responses:
+        "201":
+          description: Bookmark created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Bookmark"
+
+  /bookmarks/{id}:
+    delete:
+      operationId: deleteBookmark
+      tags: [bookmarks]
+      summary: Delete a bookmark
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Deleted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MessageResponse"
+
+  # ─── AI ──────────────────────────────────────────────────────────────────────
+  /ai/summarize:
+    post:
+      operationId: summarizeBook
+      tags: [ai]
+      summary: Generate AI summary for a book
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SummarizeInput"
+      responses:
+        "200":
+          description: AI summary
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SummaryResponse"
+
+  /ai/chat:
+    post:
+      operationId: chatWithBook
+      tags: [ai]
+      summary: Chat with a book using AI
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChatInput"
+      responses:
+        "200":
+          description: AI response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChatResponse"
+
+  /ai/chat/{bookId}/history:
+    get:
+      operationId: getChatHistory
+      tags: [ai]
+      summary: Get AI chat history for a book
+      parameters:
+        - name: bookId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Chat history
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ChatMessage"
+
+  # ─── STATS ───────────────────────────────────────────────────────────────────
+  /stats/me:
+    get:
+      operationId: getMyStats
+      tags: [stats]
+      summary: Get my reading statistics
+      responses:
+        "200":
+          description: Reading statistics
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReadingStats"
+
+  /stats/home:
+    get:
+      operationId: getHomeStats
+      tags: [stats]
+      summary: Get home page aggregate stats (book counts, user counts, etc.)
+      responses:
+        "200":
+          description: Home stats
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HomeStats"
+
 components:
   schemas:
     HealthStatus:
@@ -34,3 +777,526 @@ components:
       required:
         - status
 
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+        - error
+
+    MessageResponse:
+      type: object
+      properties:
+        message:
+          type: string
+      required:
+        - message
+
+    # ─── AUTH ──────────────────────────────────────────────────────────────────
+    RegisterInput:
+      type: object
+      required: [name, email, password]
+      properties:
+        name:
+          type: string
+          minLength: 2
+        email:
+          type: string
+        password:
+          type: string
+          minLength: 8
+
+    LoginInput:
+      type: object
+      required: [email, password]
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+
+    AuthResponse:
+      type: object
+      required: [token, user]
+      properties:
+        token:
+          type: string
+        user:
+          $ref: "#/components/schemas/User"
+
+    # ─── USER ──────────────────────────────────────────────────────────────────
+    User:
+      type: object
+      required: [id, name, email, role, createdAt]
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+        avatar:
+          type: ["string", "null"]
+        bio:
+          type: ["string", "null"]
+        role:
+          type: string
+          enum: [reader, author, admin]
+        readingStreak:
+          type: integer
+        booksRead:
+          type: integer
+        isPremium:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+
+    UserUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 2
+        bio:
+          type: string
+        avatar:
+          type: string
+
+    # ─── BOOK ──────────────────────────────────────────────────────────────────
+    Book:
+      type: object
+      required: [id, title, coverUrl, authorId, authorName, categoryId, categoryName, language, isFree, rating, reviewCount, viewCount, likeCount, createdAt]
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        subtitle:
+          type: ["string", "null"]
+        description:
+          type: ["string", "null"]
+        coverUrl:
+          type: string
+        authorId:
+          type: integer
+        authorName:
+          type: string
+        authorAvatar:
+          type: ["string", "null"]
+        categoryId:
+          type: integer
+        categoryName:
+          type: string
+        language:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        isFree:
+          type: boolean
+        price:
+          type: ["number", "null"]
+        rating:
+          type: number
+        reviewCount:
+          type: integer
+        viewCount:
+          type: integer
+        likeCount:
+          type: integer
+        totalPages:
+          type: ["integer", "null"]
+        estimatedReadTime:
+          type: ["integer", "null"]
+        isPremium:
+          type: boolean
+        isFeatured:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+
+    BookDetail:
+      allOf:
+        - $ref: "#/components/schemas/Book"
+        - type: object
+          properties:
+            chapterCount:
+              type: integer
+            isLiked:
+              type: boolean
+            libraryStatus:
+              type: ["string", "null"]
+              enum: [reading, finished, want_to_read, favorite, null]
+
+    BooksPage:
+      type: object
+      required: [books, total, page, limit]
+      properties:
+        books:
+          type: array
+          items:
+            $ref: "#/components/schemas/Book"
+        total:
+          type: integer
+        page:
+          type: integer
+        limit:
+          type: integer
+
+    LikeResponse:
+      type: object
+      required: [liked, likeCount]
+      properties:
+        liked:
+          type: boolean
+        likeCount:
+          type: integer
+
+    # ─── CHAPTER ───────────────────────────────────────────────────────────────
+    Chapter:
+      type: object
+      required: [id, bookId, title, orderIndex, wordCount]
+      properties:
+        id:
+          type: integer
+        bookId:
+          type: integer
+        title:
+          type: string
+        content:
+          type: ["string", "null"]
+        orderIndex:
+          type: integer
+        wordCount:
+          type: integer
+        readTime:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+
+    # ─── AUTHOR ────────────────────────────────────────────────────────────────
+    Author:
+      type: object
+      required: [id, name, bookCount, followerCount, isVerified]
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        avatar:
+          type: ["string", "null"]
+        bio:
+          type: ["string", "null"]
+        bookCount:
+          type: integer
+        followerCount:
+          type: integer
+        isVerified:
+          type: boolean
+        isFollowed:
+          type: boolean
+        genres:
+          type: array
+          items:
+            type: string
+
+    # ─── CATEGORY ──────────────────────────────────────────────────────────────
+    Category:
+      type: object
+      required: [id, name, slug, bookCount]
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        slug:
+          type: string
+        description:
+          type: ["string", "null"]
+        coverUrl:
+          type: ["string", "null"]
+        bookCount:
+          type: integer
+
+    # ─── REVIEW ────────────────────────────────────────────────────────────────
+    Review:
+      type: object
+      required: [id, userId, bookId, rating, createdAt]
+      properties:
+        id:
+          type: integer
+        userId:
+          type: integer
+        userName:
+          type: string
+        userAvatar:
+          type: ["string", "null"]
+        bookId:
+          type: integer
+        rating:
+          type: integer
+          minimum: 1
+          maximum: 5
+        content:
+          type: ["string", "null"]
+        createdAt:
+          type: string
+          format: date-time
+
+    ReviewInput:
+      type: object
+      required: [rating]
+      properties:
+        rating:
+          type: integer
+          minimum: 1
+          maximum: 5
+        content:
+          type: string
+
+    ReviewsPage:
+      type: object
+      required: [reviews, total, page, limit]
+      properties:
+        reviews:
+          type: array
+          items:
+            $ref: "#/components/schemas/Review"
+        total:
+          type: integer
+        page:
+          type: integer
+        limit:
+          type: integer
+
+    # ─── LIBRARY ───────────────────────────────────────────────────────────────
+    LibraryItem:
+      type: object
+      required: [id, userId, bookId, status, progress, addedAt]
+      properties:
+        id:
+          type: integer
+        userId:
+          type: integer
+        bookId:
+          type: integer
+        book:
+          $ref: "#/components/schemas/Book"
+        status:
+          type: string
+          enum: [reading, finished, want_to_read, favorite]
+        progress:
+          type: integer
+          minimum: 0
+          maximum: 100
+        addedAt:
+          type: string
+          format: date-time
+
+    LibraryInput:
+      type: object
+      required: [bookId, status]
+      properties:
+        bookId:
+          type: integer
+        status:
+          type: string
+          enum: [reading, finished, want_to_read, favorite]
+        progress:
+          type: integer
+          minimum: 0
+          maximum: 100
+          default: 0
+
+    LibraryUpdate:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [reading, finished, want_to_read, favorite]
+        progress:
+          type: integer
+          minimum: 0
+          maximum: 100
+
+    # ─── BOOKMARK ──────────────────────────────────────────────────────────────
+    Bookmark:
+      type: object
+      required: [id, userId, bookId, createdAt]
+      properties:
+        id:
+          type: integer
+        userId:
+          type: integer
+        bookId:
+          type: integer
+        chapterId:
+          type: ["integer", "null"]
+        chapterTitle:
+          type: ["string", "null"]
+        note:
+          type: ["string", "null"]
+        createdAt:
+          type: string
+          format: date-time
+
+    BookmarkInput:
+      type: object
+      required: [bookId]
+      properties:
+        bookId:
+          type: integer
+        chapterId:
+          type: integer
+        note:
+          type: string
+
+    # ─── AI ────────────────────────────────────────────────────────────────────
+    SummarizeInput:
+      type: object
+      required: [bookId]
+      properties:
+        bookId:
+          type: integer
+        length:
+          type: string
+          enum: [short, medium, long]
+          default: medium
+        style:
+          type: string
+          enum: [paragraph, bullets, executive, timeline]
+          default: paragraph
+
+    SummaryResponse:
+      type: object
+      required: [summary, bookId]
+      properties:
+        bookId:
+          type: integer
+        summary:
+          type: string
+        length:
+          type: string
+        style:
+          type: string
+        generatedAt:
+          type: string
+          format: date-time
+
+    ChatInput:
+      type: object
+      required: [bookId, message]
+      properties:
+        bookId:
+          type: integer
+        message:
+          type: string
+        sessionId:
+          type: ["string", "null"]
+
+    ChatResponse:
+      type: object
+      required: [answer, bookId, sessionId]
+      properties:
+        bookId:
+          type: integer
+        sessionId:
+          type: string
+        answer:
+          type: string
+        citations:
+          type: array
+          items:
+            $ref: "#/components/schemas/Citation"
+
+    Citation:
+      type: object
+      required: [chapterTitle, excerpt]
+      properties:
+        chapterTitle:
+          type: string
+        chapterNumber:
+          type: integer
+        excerpt:
+          type: string
+
+    ChatMessage:
+      type: object
+      required: [id, role, content, createdAt]
+      properties:
+        id:
+          type: string
+        role:
+          type: string
+          enum: [user, assistant]
+        content:
+          type: string
+        citations:
+          type: array
+          items:
+            $ref: "#/components/schemas/Citation"
+        createdAt:
+          type: string
+          format: date-time
+
+    # ─── STATS ─────────────────────────────────────────────────────────────────
+    ReadingStats:
+      type: object
+      required: [booksRead, booksInProgress, totalReadingTime, readingStreak, favoriteGenres]
+      properties:
+        booksRead:
+          type: integer
+        booksInProgress:
+          type: integer
+        totalReadingTime:
+          type: integer
+        readingStreak:
+          type: integer
+        booksThisMonth:
+          type: integer
+        booksThisYear:
+          type: integer
+        favoriteGenres:
+          type: array
+          items:
+            type: string
+        recentActivity:
+          type: array
+          items:
+            $ref: "#/components/schemas/RecentActivity"
+
+    RecentActivity:
+      type: object
+      required: [bookId, bookTitle, coverUrl, action, timestamp]
+      properties:
+        bookId:
+          type: integer
+        bookTitle:
+          type: string
+        coverUrl:
+          type: string
+        action:
+          type: string
+        progress:
+          type: ["integer", "null"]
+        timestamp:
+          type: string
+          format: date-time
+
+    HomeStats:
+      type: object
+      required: [totalBooks, totalAuthors, totalReaders, totalCategories]
+      properties:
+        totalBooks:
+          type: integer
+        totalAuthors:
+          type: integer
+        totalReaders:
+          type: integer
+        totalCategories:
+          type: integer

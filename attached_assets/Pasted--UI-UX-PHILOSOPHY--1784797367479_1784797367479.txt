@@ -1,0 +1,550 @@
+---------------------------------------------------
+UI/UX PHILOSOPHY
+---------------------------------------------------
+
+Design GLU as a premium modern application.
+
+The design should feel like a combination of:
+
+- Apple
+- Notion
+- Kindle
+- Medium
+- Spotify
+- Duolingo
+- Goodreads
+- Arc Browser
+
+The interface should be:
+
+Elegant
+
+Minimal
+
+Modern
+
+Premium
+
+Fast
+
+Accessible
+
+Responsive
+
+Beautiful
+
+Every animation should feel natural.
+
+The UI should look like a billion-dollar startup.
+
+---------------------------------------------------
+DESIGN SYSTEM
+---------------------------------------------------
+
+Create a complete design system.
+
+Include:
+
+Typography
+
+Spacing System
+
+Grid System
+
+Color Palette
+
+Elevation
+
+Border Radius
+
+Icons
+
+Illustrations
+
+Shadows
+
+Animations
+
+Transitions
+
+Accessibility Rules
+
+Responsive Rules
+
+---------------------------------------------------
+THEMES
+---------------------------------------------------
+
+Support:
+
+Light Theme
+
+Dark Theme
+
+AMOLED Theme
+
+Sepia Theme
+
+Custom Themes
+
+Users can customize:
+
+Primary Color
+
+Accent Color
+
+Reading Background
+
+Reading Font
+
+Font Size
+
+---------------------------------------------------
+TYPOGRAPHY
+---------------------------------------------------
+
+Support premium fonts.
+
+Reading fonts.
+
+UI fonts.
+
+Arabic fonts.
+
+English fonts.
+
+Turkish fonts.
+
+Support RTL and LTR.
+
+---------------------------------------------------
+ANIMATIONS
+---------------------------------------------------
+
+Implement smooth animations.
+
+Page transitions
+
+Fade
+
+Slide
+
+Scale
+
+Hero Animations
+
+Loading Skeletons
+
+Lazy Loading
+
+Pull To Refresh
+
+Infinite Scroll
+
+Micro-interactions
+
+---------------------------------------------------
+WEB APPLICATION
+---------------------------------------------------
+
+Use:
+
+Next.js
+
+React
+
+TypeScript
+
+TailwindCSS
+
+Framer Motion
+
+Responsive for:
+
+Desktop
+
+Tablet
+
+Mobile
+
+---------------------------------------------------
+HOME PAGE
+---------------------------------------------------
+
+Sections:
+
+Hero Banner
+
+Featured Books
+
+Trending Books
+
+New Releases
+
+Popular Authors
+
+Continue Reading
+
+AI Recommendations
+
+Categories
+
+Reading Challenges
+
+Audiobooks
+
+Community Picks
+
+Recently Added
+
+Best Sellers
+
+Premium Features
+
+Newsletter
+
+Footer
+
+---------------------------------------------------
+BOOK PAGE
+---------------------------------------------------
+
+Book Cover
+
+Gallery
+
+Description
+
+Author
+
+Publisher
+
+Categories
+
+Tags
+
+Language
+
+Rating
+
+Reviews
+
+Comments
+
+Similar Books
+
+AI Summary
+
+AI Chat
+
+Highlights
+
+Reading Preview
+
+Purchase Button
+
+Download Button
+
+Bookmark
+
+Share
+
+---------------------------------------------------
+READER PAGE
+---------------------------------------------------
+
+Distraction-free reading.
+
+Features:
+
+Fullscreen
+
+Progress Bar
+
+Reading Timer
+
+AI Assistant
+
+Dictionary
+
+Translation
+
+Highlight
+
+Notes
+
+Bookmarks
+
+Audio Mode
+
+Dark Mode
+
+Continue Reading
+
+---------------------------------------------------
+AUTHOR DASHBOARD
+---------------------------------------------------
+
+Dashboard includes:
+
+Overview
+
+Revenue
+
+Books
+
+Chapters
+
+Readers
+
+Followers
+
+Analytics
+
+Comments
+
+AI Assistant
+
+Withdraw Earnings
+
+Settings
+
+---------------------------------------------------
+ADMIN DASHBOARD
+---------------------------------------------------
+
+Modern analytics dashboard.
+
+Manage:
+
+Users
+
+Authors
+
+Books
+
+Payments
+
+Subscriptions
+
+AI Usage
+
+Reports
+
+Categories
+
+Advertisements
+
+Site Settings
+
+Statistics
+
+---------------------------------------------------
+PROFILE PAGE
+---------------------------------------------------
+
+Avatar
+
+Banner
+
+Bio
+
+Statistics
+
+Reading Streak
+
+Achievements
+
+Followers
+
+Following
+
+Collections
+
+Books
+
+Favorites
+
+Reading History
+
+Reviews
+
+Badges
+
+---------------------------------------------------
+LIBRARY PAGE
+---------------------------------------------------
+
+Sections:
+
+Favorites
+
+Want To Read
+
+Currently Reading
+
+Finished Reading
+
+Collections
+
+Downloads
+
+Audiobooks
+
+Bookmarks
+
+Highlights
+
+Notes
+
+---------------------------------------------------
+SEARCH PAGE
+---------------------------------------------------
+
+Advanced Search.
+
+AI Search.
+
+Filters.
+
+Sorting.
+
+Suggestions.
+
+Voice Search.
+
+Recent Searches.
+
+Trending Searches.
+
+---------------------------------------------------
+MOBILE APPLICATION
+---------------------------------------------------
+
+Use Flutter.
+
+Architecture:
+
+Clean Architecture
+
+MVVM
+
+Riverpod
+
+GoRouter
+
+Dio
+
+Hive
+
+SQLite
+
+Responsive Design
+
+Offline Support
+
+Push Notifications
+
+Biometric Login
+
+---------------------------------------------------
+OFFLINE EXPERIENCE
+---------------------------------------------------
+
+Support:
+
+Offline Books
+
+Offline Notes
+
+Offline Highlights
+
+Offline Bookmarks
+
+Sync when internet returns.
+
+---------------------------------------------------
+PWA
+---------------------------------------------------
+
+The web version should support:
+
+Install as App
+
+Offline Mode
+
+Push Notifications
+
+Background Sync
+
+---------------------------------------------------
+ACCESSIBILITY
+---------------------------------------------------
+
+WCAG 2.2
+
+Keyboard Navigation
+
+Screen Reader Support
+
+Color Blind Support
+
+Voice Navigation
+
+Dynamic Font Sizes
+
+---------------------------------------------------
+PERFORMANCE
+---------------------------------------------------
+
+Target:
+
+Lighthouse Score 95+
+
+First Contentful Paint under 1 second.
+
+Lazy Images.
+
+Image Optimization.
+
+Code Splitting.
+
+Tree Shaking.
+
+Server Side Rendering.
+
+Edge Rendering.
+
+---------------------------------------------------
+MULTI LANGUAGE
+---------------------------------------------------
+
+Support:
+
+English
+
+Arabic
+
+Turkish
+
+French
+
+German
+
+Spanish
+
+Japanese
+
+Chinese
+
+RTL Support
+
+LTR Support
+
+---------------------------------------------------
+DESIGN GOAL
+---------------------------------------------------
+
+The application should feel like a premium Apple-quality product.
+
+Every screen should have polished interactions and beautiful visual hierarchy.

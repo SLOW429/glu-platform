@@ -1,0 +1,461 @@
+---------------------------------------------------
+SYSTEM ARCHITECTURE
+---------------------------------------------------
+
+Design GLU using modern enterprise architecture.
+
+Use:
+
+- Clean Architecture
+- Domain Driven Design (DDD)
+- SOLID Principles
+- Repository Pattern
+- Dependency Injection
+- CQRS (Optional)
+- Event Driven Architecture
+- Microservices Ready
+- Modular Monolith for MVP
+
+---------------------------------------------------
+BACKEND
+---------------------------------------------------
+
+Recommended Stack:
+
+- Node.js
+- NestJS
+- TypeScript
+
+Architecture:
+
+Presentation Layer
+
+↓
+
+Application Layer
+
+↓
+
+Domain Layer
+
+↓
+
+Infrastructure Layer
+
+Use Modules for:
+
+- Authentication
+- Users
+- Authors
+- Books
+- Chapters
+- Reviews
+- Comments
+- Categories
+- AI
+- Notifications
+- Marketplace
+- Payments
+- Search
+- Analytics
+- Admin
+
+---------------------------------------------------
+DATABASE
+---------------------------------------------------
+
+Primary Database:
+
+PostgreSQL
+
+Cache:
+
+Redis
+
+Search:
+
+Meilisearch
+
+Storage:
+
+AWS S3 or Cloudflare R2
+
+Queue:
+
+BullMQ
+
+---------------------------------------------------
+DATABASE TABLES
+---------------------------------------------------
+
+Design normalized tables including:
+
+Users
+
+Roles
+
+Permissions
+
+Books
+
+BookVersions
+
+Chapters
+
+Authors
+
+Publishers
+
+Categories
+
+Subcategories
+
+Tags
+
+BookTags
+
+Reviews
+
+Ratings
+
+Bookmarks
+
+Highlights
+
+Notes
+
+ReadingHistory
+
+Collections
+
+Followers
+
+Notifications
+
+Languages
+
+Translations
+
+Payments
+
+Orders
+
+Subscriptions
+
+AIUsage
+
+AIChats
+
+ChatMessages
+
+Quizzes
+
+Flashcards
+
+Achievements
+
+Badges
+
+ReadingChallenges
+
+Reports
+
+Advertisements
+
+Analytics
+
+AuditLogs
+
+Sessions
+
+RefreshTokens
+
+---------------------------------------------------
+API DESIGN
+---------------------------------------------------
+
+RESTful API
+
+Versioning:
+
+/api/v1
+
+Modules:
+
+/auth
+
+/users
+
+/authors
+
+/books
+
+/chapters
+
+/search
+
+/reviews
+
+/comments
+
+/library
+
+/notifications
+
+/marketplace
+
+/payments
+
+/admin
+
+/analytics
+
+/ai
+
+Support:
+
+Pagination
+
+Filtering
+
+Sorting
+
+Validation
+
+Rate Limiting
+
+Caching
+
+API Documentation using Swagger
+
+---------------------------------------------------
+AUTHENTICATION
+---------------------------------------------------
+
+Use:
+
+JWT
+
+Refresh Tokens
+
+OAuth2
+
+Google
+
+Apple
+
+GitHub
+
+Microsoft
+
+Email Verification
+
+Password Reset
+
+Two Factor Authentication
+
+Session Management
+
+Remember Device
+
+---------------------------------------------------
+SECURITY
+---------------------------------------------------
+
+Implement:
+
+Helmet
+
+CORS
+
+CSRF Protection
+
+XSS Protection
+
+SQL Injection Prevention
+
+Rate Limiting
+
+Encryption
+
+Password Hashing (Argon2)
+
+Secrets Management
+
+Environment Variables
+
+Input Validation
+
+File Validation
+
+Malware Scanning
+
+Audit Logging
+
+---------------------------------------------------
+FILE STORAGE
+---------------------------------------------------
+
+Books
+
+Book Covers
+
+Images
+
+Audio
+
+Documents
+
+Use:
+
+AWS S3 or Cloudflare R2
+
+Generate signed URLs.
+
+---------------------------------------------------
+SEARCH
+---------------------------------------------------
+
+Implement:
+
+Full Text Search
+
+Semantic Search
+
+AI Search
+
+Autocomplete
+
+Suggestions
+
+Typo Tolerance
+
+Recent Searches
+
+Trending Searches
+
+---------------------------------------------------
+CACHE
+---------------------------------------------------
+
+Use Redis for:
+
+Books
+
+Home Page
+
+Popular Books
+
+Recommendations
+
+Search Results
+
+Sessions
+
+Rate Limiting
+
+---------------------------------------------------
+BACKGROUND JOBS
+---------------------------------------------------
+
+Use BullMQ
+
+Jobs:
+
+Send Emails
+
+Generate AI Summaries
+
+Generate Quizzes
+
+Generate Flashcards
+
+Process Images
+
+Generate Audio
+
+Notifications
+
+Analytics
+
+---------------------------------------------------
+LOGGING
+---------------------------------------------------
+
+Implement:
+
+Application Logs
+
+Error Logs
+
+Security Logs
+
+Audit Logs
+
+Performance Logs
+
+---------------------------------------------------
+MONITORING
+---------------------------------------------------
+
+Integrate:
+
+Prometheus
+
+Grafana
+
+OpenTelemetry
+
+Health Checks
+
+Crash Reporting
+
+---------------------------------------------------
+TESTING
+---------------------------------------------------
+
+Support:
+
+Unit Tests
+
+Integration Tests
+
+End-to-End Tests
+
+Performance Tests
+
+Security Tests
+
+Load Tests
+
+---------------------------------------------------
+DEPLOYMENT
+---------------------------------------------------
+
+Docker
+
+Docker Compose
+
+GitHub Actions
+
+CI/CD
+
+Nginx
+
+HTTPS
+
+Automatic Backups
+
+Blue/Green Deployment
+
+Zero Downtime Deployment
+
+Environment Separation:
+
+Development
+
+Staging
+
+Production
+
+End of Part 3.

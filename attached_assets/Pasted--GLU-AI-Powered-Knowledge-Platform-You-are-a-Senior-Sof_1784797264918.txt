@@ -1,0 +1,319 @@
+# GLU — AI Powered Knowledge Platform
+
+You are a Senior Software Architect, Senior UI/UX Designer, Senior Backend Engineer, Senior Mobile Engineer, AI Engineer, Database Architect, DevOps Engineer, and Product Manager.
+
+Your task is to design and build a production-ready platform called **GLU**.
+
+GLU is not just an ebook platform.
+
+It is an AI-powered knowledge ecosystem that combines the best features of:
+
+- Kindle
+- Goodreads
+- Wattpad
+- Medium
+- Notion AI
+- ChatGPT
+- Duolingo
+
+The goal is to become the world's smartest reading platform.
+
+Every decision should focus on:
+
+- Scalability
+- Security
+- Performance
+- Accessibility
+- Beautiful UI
+- Clean Architecture
+- Modular Code
+- Maintainability
+
+---------------------------------------------------
+PROJECT TYPES
+---------------------------------------------------
+
+The project consists of:
+
+1. Responsive Website
+
+2. Android Application
+
+3. iOS Application
+
+4. Admin Dashboard
+
+5. Backend REST API
+
+6. AI Services
+
+7. Search Engine
+
+8. Recommendation Engine
+
+9. Analytics Platform
+
+10. Author Dashboard
+
+---------------------------------------------------
+TARGET USERS
+---------------------------------------------------
+
+There are four user roles.
+
+1. Guest
+
+Guests can:
+
+- Browse books
+- Search books
+- Read previews
+- View authors
+- View categories
+- Register
+- Login
+
+------------------------------------
+
+2. Reader
+
+Readers can:
+
+- Read books
+- Read novels
+- Bookmark pages
+- Save favorite books
+- Continue reading
+- Follow authors
+- Follow users
+- Like books
+- Rate books
+- Write reviews
+- Comment on chapters
+- Highlight text
+- Save notes
+- Download books (Premium)
+- Read offline
+- Listen to audiobooks
+- Share quotes
+- Join reading challenges
+
+------------------------------------
+
+3. Author
+
+Authors can:
+
+- Create books
+- Create novels
+- Upload chapters
+- Save drafts
+- Publish books
+- Schedule publishing
+- Edit books
+- Delete books
+- Upload covers
+- Upload illustrations
+- Add categories
+- Add tags
+- Add languages
+- Manage comments
+- Reply to readers
+- View analytics
+- Sell books
+- Earn money
+- Withdraw earnings
+
+------------------------------------
+
+4. Administrator
+
+Admins can manage:
+
+- Users
+- Authors
+- Books
+- Chapters
+- Categories
+- Tags
+- Languages
+- AI usage
+- Reports
+- Advertisements
+- Premium subscriptions
+- Payments
+- Analytics
+- Featured books
+- Featured authors
+
+---------------------------------------------------
+AUTHENTICATION
+---------------------------------------------------
+
+Support:
+
+- Email & Password
+- Google Login
+- Apple Login
+- Facebook Login
+- GitHub Login
+- Microsoft Login
+
+Features:
+
+- Email verification
+- Password reset
+- Two-factor authentication
+- Session management
+- Device management
+- JWT Authentication
+- Refresh Tokens
+- OAuth2
+
+---------------------------------------------------
+USER PROFILE
+---------------------------------------------------
+
+Each user profile includes:
+
+- Avatar
+- Banner
+- Bio
+- Reading statistics
+- Favorite genres
+- Favorite authors
+- Followers
+- Following
+- Reading streak
+- Reading level
+- Achievements
+- Badges
+- Reading history
+- Recently viewed books
+- Public collections
+
+---------------------------------------------------
+BOOK DETAILS
+---------------------------------------------------
+
+Every book includes:
+
+- Cover image
+- Gallery
+- Title
+- Subtitle
+- Author
+- Publisher
+- Description
+- Categories
+- Tags
+- Language
+- ISBN
+- Publication Date
+- Reading Time
+- Total Pages
+- Rating
+- Reviews
+- Downloads
+- Views
+- Likes
+- Shares
+- Price
+- Free/Paid
+- Age Rating
+
+---------------------------------------------------
+CHAPTER SYSTEM
+---------------------------------------------------
+
+Each chapter supports:
+
+- Rich text
+- Images
+- Videos
+- Tables
+- Code blocks
+- Quotes
+- Footnotes
+- References
+- Math equations
+- Audio
+- Attachments
+
+---------------------------------------------------
+SEARCH
+---------------------------------------------------
+
+Implement an advanced search engine with:
+
+- Full-text search
+- AI semantic search
+- Filters
+- Categories
+- Languages
+- Authors
+- Ratings
+- Publication year
+- Popularity
+- Reading time
+- Difficulty
+- Tags
+
+---------------------------------------------------
+LIBRARY
+---------------------------------------------------
+
+Users can create:
+
+- Favorites
+- Want to Read
+- Currently Reading
+- Finished Reading
+- Reading Later
+- Custom Collections
+- Shared Collections
+
+---------------------------------------------------
+NOTIFICATIONS
+---------------------------------------------------
+
+Support:
+
+- Push Notifications
+- Email Notifications
+- In-app Notifications
+
+Notify users for:
+
+- New followers
+- Comments
+- Replies
+- Likes
+- New chapters
+- Book updates
+- Promotions
+- Reading reminders
+- Daily goals
+- AI credits
+
+---------------------------------------------------
+READING EXPERIENCE
+---------------------------------------------------
+
+Provide a premium reading experience:
+
+- Light Mode
+- Dark Mode
+- Sepia Mode
+- Font selection
+- Font size
+- Line spacing
+- Margins
+- Reading themes
+- Vertical scrolling
+- Horizontal pagination
+- Auto-scroll
+- Reading timer
+- Reading statistics
+- Continue where you left off
+- Cross-device sync
