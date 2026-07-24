@@ -1,0 +1,175 @@
+# GLU — Local Development Stack
+# Version: 1.0.0
+# Description: Full local development infrastructure for the GLU backend.
+#
+# Services:
+#   - PostgreSQL 16 (relational data)
+#   - Redis 7 (cache, sessions, pub/sub, queue)
+#   - Meilisearch 1.8 (full-text search)
+#   - Qdrant 1.10 (vector database)
+#   - MinIO (S3-compatible object storage, local Cloudflare R2 stand-in)
+#   - Jaeger (OpenTelemetry tracing UI, dev only)
+#   - Prometheus (metrics scraper)
+#   - Grafana (metrics dashboard)
+#
+# Usage:
+#   docker compose up -d
+#   docker compose down
+#   docker compose down -v   # WARNING: also removes persistent data volumes
+
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: glu-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: glu
+      POSTGRES_PASSWORD: glu
+      POSTGRES_DB: glu
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U glu -d glu"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - glu
+
+  redis:
+    image: redis:7-alpine
+    container_name: glu-redis
+    restart: unless-stopped
+    command: >
+      redis-server
+      --appendonly yes
+      --maxmemory 256mb
+      --maxmemory-policy allkeys-lru
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - glu
+
+  meilisearch:
+    image: getmeili/meilisearch:v1.8
+    container_name: glu-meilisearch
+    restart: unless-stopped
+    environment:
+      MEILI_MASTER_KEY: ${MEILISEARCH_MASTER_KEY:-dev-master-key-change-in-production}
+      MEILI_NO_ANALYTICS: "true"
+    ports:
+      - "7700:7700"
+    volumes:
+      - meilisearch_data:/meili_data
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:7700/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - glu
+
+  qdrant:
+    image: qdrant/qdrant:v1.10
+    container_name: glu-qdrant
+    restart: unless-stopped
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - qdrant_data:/qdrant/storage
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:6333/healthz"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - glu
+
+  minio:
+    image: minio/minio:latest
+    container_name: glu-minio
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - glu
+
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    container_name: glu-jaeger
+    restart: unless-stopped
+    ports:
+      - "16686:16686"
+      - "4318:4318"
+    environment:
+      COLLECTOR_OTLP_ENABLED: "true"
+    networks:
+      - glu
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: glu-prometheus
+    restart: unless-stopped
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+      - "--web.enable-lifecycle"
+    networks:
+      - glu
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: glu-grafana
+    restart: unless-stopped
+    ports:
+      - "3002:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./docker/grafana/provisioning:/etc/grafana/provisioning:ro
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: admin
+    networks:
+      - glu
+
+volumes:
+  postgres_data:
+  redis_data:
+  meilisearch_data:
+  qdrant_data:
+  minio_data:
+  prometheus_data:
+  grafana_data:
+
+networks:
+  glu:
+    driver: bridge
