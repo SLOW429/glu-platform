@@ -1,0 +1,458 @@
+Excellent work.
+
+I approve the overall architecture, but before implementation begins I want to improve it further to make GLU truly enterprise-grade and future-proof.
+
+Please apply the following architectural changes before writing any code.
+
+---------------------------------------------------
+1. KNOWLEDGE ENGINE
+---------------------------------------------------
+
+Create a dedicated "Knowledge Engine" module.
+
+This should become the heart of GLU.
+
+Every content type should pass through exactly the same pipeline.
+
+Supported content:
+
+- Books
+- Novels
+- PDFs
+- Research Papers
+- Articles
+- Courses
+- Videos
+- Podcasts
+- Images (OCR)
+- Documents
+- Notes
+- Web Pages
+
+Pipeline:
+
+Import
+→ Normalize
+→ Parse
+→ Chunk
+→ Metadata Extraction
+→ Embeddings
+→ Vector Storage
+→ Knowledge Graph
+→ AI Services
+
+Never duplicate logic for different content types.
+
+---------------------------------------------------
+2. AI PLATFORM
+---------------------------------------------------
+
+Split the AI module into multiple independent modules.
+
+AI/
+
+- Gateway
+- Providers
+- Prompts
+- Memory
+- Agents
+- RAG
+- Embeddings
+- Vector
+- Tools
+- Workflows
+- Moderation
+- Analytics
+- Cost Control
+- Evaluation
+
+The AI Gateway should route requests to providers.
+
+Providers should be interchangeable.
+
+Support:
+
+OpenAI
+
+Anthropic
+
+Gemini
+
+DeepSeek
+
+Groq
+
+OpenRouter
+
+Ollama
+
+LM Studio
+
+Switching providers should require minimal code changes.
+
+---------------------------------------------------
+3. PROMPT MANAGEMENT
+---------------------------------------------------
+
+Never hardcode prompts.
+
+Create:
+
+prompts/
+
+summary.md
+
+teacher.md
+
+quiz.md
+
+translator.md
+
+writing.md
+
+moderator.md
+
+research.md
+
+librarian.md
+
+Prompt versioning should be supported.
+
+---------------------------------------------------
+4. VECTOR DATABASE
+---------------------------------------------------
+
+Replace pgvector with a dedicated vector database.
+
+Preferred:
+
+Qdrant
+
+Keep PostgreSQL for relational data only.
+
+The vector layer should be abstracted to allow future migration if needed.
+
+---------------------------------------------------
+5. STORAGE ABSTRACTION
+---------------------------------------------------
+
+Create a Storage Provider abstraction.
+
+Support:
+
+Cloudflare R2
+
+MinIO
+
+Amazon S3
+
+Azure Blob Storage
+
+Google Cloud Storage
+
+Switching providers should require no business logic changes.
+
+---------------------------------------------------
+6. EVENT BUS
+---------------------------------------------------
+
+Abstract event publishing.
+
+Current implementation:
+
+BullMQ
+
+Future support:
+
+RabbitMQ
+
+Kafka
+
+NATS
+
+Redis Streams
+
+Business logic should not depend directly on BullMQ.
+
+---------------------------------------------------
+7. API GATEWAY
+---------------------------------------------------
+
+Introduce an API Gateway layer.
+
+Responsibilities:
+
+Authentication
+
+Authorization
+
+Rate Limiting
+
+Logging
+
+API Versioning
+
+Request Validation
+
+Monitoring
+
+API Keys
+
+Future GraphQL Support
+
+---------------------------------------------------
+8. FEATURE FLAGS
+---------------------------------------------------
+
+Create a Feature Flag module.
+
+Support:
+
+Enable/Disable Features
+
+Beta Features
+
+Canary Releases
+
+A/B Testing
+
+Percentage Rollout
+
+User-based Rollout
+
+---------------------------------------------------
+9. OBSERVABILITY
+---------------------------------------------------
+
+Design complete observability.
+
+Support:
+
+OpenTelemetry
+
+Grafana
+
+Prometheus
+
+Jaeger
+
+Sentry
+
+Distributed Tracing
+
+Metrics
+
+Logs
+
+Health Checks
+
+---------------------------------------------------
+10. SECURITY
+---------------------------------------------------
+
+Expand security architecture.
+
+Include:
+
+CSRF Protection
+
+XSS Protection
+
+CSP
+
+SQL Injection Prevention
+
+Rate Limiting
+
+Cloudflare WAF
+
+Bot Detection
+
+reCAPTCHA
+
+Secret Management
+
+Security Headers
+
+Audit Logging
+
+---------------------------------------------------
+11. RBAC
+---------------------------------------------------
+
+Replace simple roles with a permission-based authorization system.
+
+Support:
+
+Roles
+
+Permissions
+
+Groups
+
+Policies
+
+Future Enterprise Accounts
+
+---------------------------------------------------
+12. OCR & IMPORT PIPELINE
+---------------------------------------------------
+
+Create dedicated modules.
+
+OCR
+
+PDF Parsing
+
+EPUB Parsing
+
+DOCX Parsing
+
+Markdown Parsing
+
+HTML Parsing
+
+Web Import
+
+GitHub Import
+
+Google Docs Import
+
+Notion Import
+
+YouTube Import
+
+Podcast Import
+
+Everything should feed into the Knowledge Engine.
+
+---------------------------------------------------
+13. AI COST MANAGEMENT
+---------------------------------------------------
+
+Create an AI Cost module.
+
+Features:
+
+Daily Limits
+
+Monthly Limits
+
+Token Budget
+
+Provider Cost Comparison
+
+Cheapest Model Selection
+
+Automatic Fallback
+
+Usage Analytics
+
+Cost Dashboard
+
+---------------------------------------------------
+14. MODERATION
+---------------------------------------------------
+
+Create a Moderation module.
+
+Support:
+
+AI Moderation
+
+Book Moderation
+
+Comment Moderation
+
+Review Moderation
+
+Image Moderation
+
+Spam Detection
+
+Copyright Detection
+
+---------------------------------------------------
+15. BACKUP & RECOVERY
+---------------------------------------------------
+
+Design backup architecture.
+
+Point-in-Time Recovery
+
+Snapshots
+
+Daily Backups
+
+Weekly Backups
+
+Restore Testing
+
+Disaster Recovery Plan
+
+---------------------------------------------------
+16. CDN
+---------------------------------------------------
+
+Serve all assets through a CDN.
+
+Images
+
+Book Covers
+
+Audio
+
+Video
+
+Static Assets
+
+---------------------------------------------------
+17. ARCHITECTURE DECISION RECORDS (ADR)
+---------------------------------------------------
+
+Before implementation, create Architecture Decision Records explaining major decisions.
+
+Examples:
+
+- Why NestJS instead of Express
+- Why Prisma instead of TypeORM
+- Why PostgreSQL
+- Why Qdrant instead of pgvector
+- Why Meilisearch instead of Elasticsearch
+- Why BullMQ for the MVP
+- Why Modular Monolith before Microservices
+- Why Redis
+- Why Cloudflare R2
+
+Each ADR should include:
+
+Context
+
+Decision
+
+Alternatives Considered
+
+Pros
+
+Cons
+
+Consequences
+
+---------------------------------------------------
+FINAL REQUIREMENT
+---------------------------------------------------
+
+Treat GLU as a company, not just a software project.
+
+Every architectural decision must prioritize:
+
+- Scalability
+- Maintainability
+- Security
+- Developer Experience
+- Cost Efficiency
+- High Availability
+- Performance
+- Future Enterprise Support
+
+Do not begin implementation until all architecture updates and ADR documents are completed and approved.
